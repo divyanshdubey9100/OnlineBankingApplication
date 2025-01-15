@@ -1,0 +1,46 @@
+--------------Admin Reg Req ------------
+insert into admin_reg_req (id,address,gender,mobile,name,pass,user_id) VALUES (105,'test123','other',1234567890,'test123','12345','test123@test123.com');
+insert into admin_reg_req (id,address,gender,mobile,name,pass,user_id) VALUES (106,'test124','other',2345678980,'test124','12345','test124@test124.com');
+insert into admin_reg_req (id,address,gender,mobile,name,pass,user_id) VALUES (107,'test111','other',1111111111,'test111','12345','test111@test111.com');
+insert into admin_reg_req (id,address,gender,mobile,name,pass,user_id) VALUES (108,'test222','other',2222222222,'test222','12345','test222@test222.com');
+insert into admin_reg_req (id,address,gender,mobile,name,pass,user_id) VALUES (109,'test333','other',3333333333,'test333','12345','test123@test333.com');
+
+---------------Admin Reg -------------------
+
+insert into admin_reg (id,address,gender,mobile,name,pass,user_id) VALUES (100,'test444','other',4444444444,'test444','12345','test444@test444.com');
+insert into admin_reg (id,address,gender,mobile,name,pass,user_id) VALUES (101,'test555','other',5555555555,'test555','12345','test124@test555.com');
+insert into admin_reg (id,address,gender,mobile,name,pass,user_id) VALUES (102,'test666','other',6666666666,'test666','12345','test666@test666.com');
+insert into admin_reg (id,address,gender,mobile,name,pass,user_id) VALUES (103,'test777','other',7777777777,'test777','12345','test777@test777.com');
+insert into admin_reg (id,address,gender,mobile,name,pass,user_id) VALUES (104,'test888','other',8888888888,'test888','12345','test888@test888.com'); 
+
+------------------Customer ------------------
+
+insert into customer (accno,address,balance,email,gender,mobile,name,pass) VALUES (1001,'test111',5000,'abc111@abc111.com','male','1111111111','test111','12345');
+insert into customer (accno,address,balance,email,gender,mobile,name,pass) VALUES (1002,'test222',5000,'abc222@abc222.com','male','2222222222','test222','12345');
+insert into customer (accno,address,balance,email,gender,mobile,name,pass) VALUES (1003,'test123',5000,'abc333@abc333.com','male','3333333333','test333','12345');
+insert into customer (accno,address,balance,email,gender,mobile,name,pass) VALUES (1004,'test123',5000,'abc444@abc444.com','male','4444444444','test444','12345');
+
+--------------Customer_req -----------------
+
+insert into customer_req (accno,address,balance,email,gender,mobile,name,pass) VALUES (1005,'test555',5000,'abc555@abc555.com','male','5555555555','test555','12345');
+insert into customer_req (accno,address,balance,email,gender,mobile,name,pass) VALUES (1006,'test666',5000,'abc666@abc666.com','male','6666666666','test666','12345');
+insert into customer_req (accno,address,balance,email,gender,mobile,name,pass) VALUES (1007,'test777',5000,'abc777@abc777.com','male','7777777777','test777','12345');
+insert into customer_req (accno,address,balance,email,gender,mobile,name,pass) VALUES (1008,'test888',5000,'abc888@abc888.com','male','8888888888','test888','12345');
+
+------------- passbook -----------
+
+insert into passbook (id,trx_id,acc_no,amt_bef_trx,current_balance,cust_name,trx_amt,trx_date,trx_mode) values (1,'123456789',1001,50000,500000,'test111',5000,'12-10-2022-11:44:50','debit');
+insert into passbook (id,trx_id,acc_no,amt_bef_trx,current_balance,cust_name,trx_amt,trx_date,trx_mode) values (2,'222222222',1002,50000,500000,'test222',5000,'12-10-2022-11:44:50','debit');
+insert into passbook (id,trx_id,acc_no,amt_bef_trx,current_balance,cust_name,trx_amt,trx_date,trx_mode) values (3,'333333333',1003,50000,500000,'test333',5000,'11-10-2022-11:44:50','debit');
+insert into passbook (id,trx_id,acc_no,amt_bef_trx,current_balance,cust_name,trx_amt,trx_date,trx_mode) values (4,'444444444',1004,50000,500000,'test444',5000,'10-10-2022-11:44:50','debit');
+insert into passbook (id,trx_id,acc_no,amt_bef_trx,current_balance,cust_name,trx_amt,trx_date,trx_mode) values (5,'444555555',1001,50000,500000,'test111',5000,'12-10-2022-11:44:50','debit');
+insert into passbook (id,trx_id,acc_no,amt_bef_trx,current_balance,cust_name,trx_amt,trx_date,trx_mode) values (6,'222222222',1002,50000,500000,'test222',5000,'12-10-2022-11:44:50','debit');
+insert into passbook (id,trx_id,acc_no,amt_bef_trx,current_balance,cust_name,trx_amt,trx_date,trx_mode) values (7,'666666666',1003,50000,500000,'test333',5000,'11-10-2022-11:44:50','debit');
+insert into passbook (id,trx_id,acc_no,amt_bef_trx,current_balance,cust_name,trx_amt,trx_date,trx_mode) values (8,'777777777',1004,50000,500000,'test444',5000,'10-10-2022-11:44:50','debit');
+
+-------------Owner ---------------------------
+
+insert into owner (id,gender,mobile,name,pass,user_id,address,dob,ques1,ans1,ques2,ans2) values (1,'male','1111111111','test111','12345','test111@test111.com','test111','01-01-2000','Name Of Your Favourite Pet','aaaa','Name Of Your Best Friend','aaaaa');
+insert into owner (id,gender,mobile,name,pass,user_id,address,dob,ques1,ans1,ques2,ans2) values (2,'female','2222222222','test222','12345','test222@test222.com','test222','01-01-2003','Name Of Your Favourite Pet','ddd','Name Of Your Best Friend','ddd');
+insert into owner (id,gender,mobile,name,pass,user_id,address,dob,ques1,ans1,ques2,ans2) values (3,'male','3333333333','test333','12345','test333@test333.com','test333','01-01-2002','Name Of Your Favourite Pet','ccc','Name Of Your Best Friend','ccc');
+insert into owner (id,gender,mobile,name,pass,user_id,address,dob,ques1,ans1,ques2,ans2) values (4,'other','4444444444','test444','12345','test444@test444.com','test444','01-01-2001','Name Of Your Favourite Pet','bbb','Name Of Your Best Friend','bbb');

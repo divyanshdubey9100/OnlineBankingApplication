@@ -1,0 +1,20 @@
+server.port=9090
+#oracle config
+#spring.datasource.url=jdbc:oracle:thin:@localhost:1521:xe
+#spring.datasource.tomcat.driver-class-name=oracle.jdbc.driver.OracleDriver
+#spring.datasource.username=banking
+#spring.datasource.password=banking
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.Oracle10gDialect
+spring.thymeleaf.cache=false
+server.error.whitelabel.enabled=false
+#spring.datasource.initialization-mode=always
+#org.hibernate.tool.hbm2ddl=validate|update|create|create-drop|none
+#logging.level.root=trace
+#mysql config
+spring.datasource.url=jdbc:mysql://127.0.0.1:3306/OnlineBankingApplication
+spring.datasource.driverClassName=com.mysql.jdbc.Driver
+spring.datasource.username=banking
+spring.datasource.password=banking

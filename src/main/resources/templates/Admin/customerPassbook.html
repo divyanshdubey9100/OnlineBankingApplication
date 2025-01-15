@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<style>
+</style>
+<body>
+	<h3>Account Statement</h3>
+	<table border="1" width="auto" padding="5%">
+		<thead>
+			<tr>
+				<th>trxId</th>
+				<th>accNo</th>
+				<th>custName</th>
+				<th>trxDate</th>
+				<th>trxMode</th>
+				<th>amtBefTrx</th>
+				<th>trxAmt</th>
+				<th>currentBalance</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="temp:${cust}">
+				<td th:text="${temp.trxId}" />
+				<td th:text="${temp.accNo}" />
+				<td th:text="${temp.custName}" />
+				<td th:text="${temp.trxDate}" />
+				<td th:text="${temp.trxMode}" />
+				<td th:text="${temp.amtBefTrx}" />
+				<td th:text="${temp.trxAmt}" />
+				<td th:text="${temp.currentBalance}" />
+			</tr>
+		</tbody>
+	</table>
+	<br>
+	<br>
+	<a href="/banking" style="margin-left: 5%">Back</a>
+</body>
+</html>

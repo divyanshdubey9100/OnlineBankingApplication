@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Admin List</title>
+</head>
+<style>
+</style>
+<body>
+	<h3>List Of Admin</h3>
+	<table border="1" width="auto" padding="5%">
+		<thead>
+			<tr>
+				<th>id</th>
+				<th>userId</th>
+				<th>name</th>
+				<th>mobile</th>
+				<th>password</th>
+				<th>gender</th>
+				<th>address</th>
+				<th>edit</th>
+				<th>Delete</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="temp:${cust}">
+				<td th:text="${temp.id}" />
+				<td th:text="${temp.userId}" />
+				<td th:text="${temp.name}" />
+				<td th:text="${temp.mobile}" />
+				<td th:text="${temp.pass}" />
+				<td th:text="${temp.gender}" />
+				<td th:text="${temp.address}" />
+				<td>
+					<form action="/editAdmin" method="post">
+						<input type="hidden" name="id" th:value="${temp.id}">
+						<input type="submit" value="Update">
+					</form>
+				</td>
+				<td>
+					<form action="/deleteAdmin">
+						<input type="hidden" name="id" th:value="${temp.id}">
+						<input type="submit" value="delete">
+					</form>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<br>
+	<br>
+	<a href="/admin" style="margin-left: 5%">AdminPanel</a>
+	
+</body>
+</html>

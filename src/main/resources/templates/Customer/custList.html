@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<style>
+</style>
+<body>
+	<h3>List Of customers</h3>
+	<table border="1" width="auto" padding="5%">
+		<thead>
+			<tr>
+				<th>accno</th>
+				<th>name</th>
+				<th>email</th>
+				<th>pass</th>
+				<th>mobile</th>
+				<th>balance</th>
+				<th>gender</th>
+				<th>address</th>
+				<th>Edit</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="temp:${cust}">
+				<td th:text="${temp.accno}" />
+				<td th:text="${temp.name}" />
+				<td th:text="${temp.email}" />
+				<td th:text="${temp.pass}" />
+				<td th:text="${temp.mobile}" />
+				<td th:text="${temp.balance}" />
+				<td th:text="${temp.gender}" />
+				<td th:text="${temp.address}" />
+				<td>
+					<form action="/custEdit" method="post">
+						<input type="hidden" name="accno" th:value="${temp.accno}">
+						<input type="submit" value="edit">
+					</form>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<br>
+	<br>
+	<a href="/customer" style="margin-left: 5%">Back</a>
+</body>
+</html>

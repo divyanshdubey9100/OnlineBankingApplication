@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>Welcome To WGS Bank</h1>
+		<select onchange="openInNewTab(this);">
+			<option>Select</option>
+			<option value="/adminLogin">Admin</option>
+			<option value="/customerLogin">Customer</option>
+		</select>
+
+
+<script type="text/javascript">
+
+	function openInNewTab(obj) {
+		var win = window.open(obj.value, '_parent');
+		win.focus();
+	}
+</script>
+</body>
+</html>

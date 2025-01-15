@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<style>
+</style>
+<body>
+	<h3>List Of customers</h3>
+	<table border="1" width="auto" padding="5%">
+		<thead>
+			<tr>
+				<th>id</th>
+				<th>userId</th>
+				<th>name</th>
+				<th>mobile</th>
+				<th>password</th>
+				<th>gender</th>
+				<th>address</th>
+				<th>update</th>
+			</tr>
+		</thead>
+		<tbody>
+			<form action="/editAdminDetailByOwn">
+				<tr th:each="temp:${cust}">
+
+					<!-- 			id -->
+					<td><span th:text="${temp.id}" /> <input type="hidden"
+						name="id" th:value="${temp.id}" /></td>
+
+					<!-- 					userId -->
+					<td><span th:text="${temp.userId}" /> <input type="hidden"
+						name="userId" th:value="${temp.userId}" /></td>
+
+
+
+					<!-- 					name -->
+					<td><span th:text="${temp.name}" /><br><br>
+					
+					<input type="hidden"
+							name="name" th:value="${temp.name}" /></td>
+					
+					<td>
+					<span th:text="${temp.mobile}" /> <br><br>
+					<input type="tel" name="mobile"
+							placeholder="enter mobile_no.." required="required">
+					</td>
+					<!-- 				pass -->
+					<td>
+					<input type="password" name="pass" placeholder="enter New password"
+						required="required">
+					</td>
+
+					
+					<!-- 				Gender -->
+					<td>
+					<span  th:text="${temp.gender}" /><br><br>
+					<input type="hidden" name="gender" th:value="${temp.gender}">
+					</td>
+
+					<!-- 				Address -->
+					<td>
+					<span th:text="${temp.address}" /><br><br>
+					<textarea name="address"
+							placeholder="Enter Your Full Address" required="required">
+				</textarea></td>
+					<td><input type="submit" value="update"></td>
+
+				</tr>
+			</form>
+		</tbody>
+	</table>
+	<br>
+	<br>
+	<a href="/own" style="margin-left: 5%">Back</a>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<h3>Enter Correct Details</h3>
+	<form action="/regOwnAccount" method="post">
+		Name :<br><br>
+				<input type="text" name="name" placeholder="Enter Your Name" required><br><br>
+		Email:<br><br>
+				<input type="email" name="userId" placeholder="Enter Your email" required><br><br>
+				
+		Pass:<br><br>
+				<input type="password" name="pass" placeholder="Enter Your pass" required><br><br>
+		Mobile :<br><br>
+				<input type="tel" min="10" maxlength="10" placeholder="Enter Mobile Number.." name="mobile" required><br><br>
+		Gender:<br><br>
+		Male:<input type="radio" name="gender" value="Male"><br><br>
+		Female:<input type="radio" name="gender" value="Female"><br><br>
+		Other:<input type="radio" name="gender" value="Other"><br><br>
+		DOB: <br><br>
+		<input type="date" name="dob" id="dob"  min="1950-01-01" max="2050-12-31" required><br><br>
+		Address: <br><br>
+		<textarea name="address" id="address" cols="30" rows="3"></textarea><br><br>
+		Question 1: <br><br>
+		<select name="ques1" id="ques1" required>
+			<option>Select</option>
+			<option value="Name Of Your Favourite Pet">Name Of Your Favourite Pet</option>
+			<option value="Name Of Your Best Friend">Name Of Your Best Friend</option>
+			<option value="Name Of Your First Crush">Name Of Your First Crush</option>
+			<option value="Your Favourite Color">Your Favourite Color</option>
+		  </select><br><br>
+		  Answer1: <br><br>
+		  <input type="text" name="ans1" id="ans1" placeholder="Enter Answer of Question1" required><br><br>
+		  Question 2: <br><br>
+		<select name="ques2" id="ques2" required>
+			<option>Select</option>
+			<option value="Name Of Your Favourite Pet">Name Of Your Favourite Pet</option>
+			<option value="Name Of Your Best Friend">Name Of Your Best Friend</option>
+			<option value="Name Of Your First Crush">Name Of Your First Crush</option>
+			<option value="Your Favourite Color">Your Favourite Color</option>
+		  </select><br><br>
+		  Answer2: <br><br>
+		  <input type="text" name="ans2" id="ans2" placeholder="Enter Answer of Question2" required>
+		  <br><br>
+		<input type="submit">
+		<a href="/ownLogin" style="margin-left: 5%" >Login</a>
+		
+	</form>
+</body>
+</html>

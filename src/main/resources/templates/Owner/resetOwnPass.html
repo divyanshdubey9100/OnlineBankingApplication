@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<!-- 	<p th:text="${cust}"></p> -->
+<form action="/updateOwnPass" method="post">
+	<tr th:each="temp:${cust}">
+	
+	<h4>Reset Password</h4>
+		<input type="hidden" name="id" th:value="${temp.id}" />
+<!-- 		<input type="hidden" name="userId" th:value="${temp.userId}" /> -->
+<!-- 		<input type="hidden" name="name" th:value="${temp.name}" /> -->
+<!-- 		<input type="hidden" name="mobile" th:value="${temp.mobile}" /> -->
+<!-- 		<input type="hidden" name="gender" th:value="${temp.gender}"> -->
+<!-- 		<input type="hidden" name="dob" th:value="${temp.dob}"> -->
+<!-- 		<input type="hidden" name="address" th:value="${temp.address}"> -->
+<!-- 		<input type="hidden" name="ques1" th:value="${temp.ques1}"> -->
+<!-- 		<input type="hidden" name="ans1" th:value="${temp.ans1}"> -->
+<!-- 		<input type="hidden" name="ques2" th:value="${temp.ques2}"> -->
+<!-- 		<input type="hidden" name="ans2" th:value="${temp.ans2}"> -->
+		<input type="password" name="pass" placeholder="Enter Your New pass.." required="required"><br><br>
+		<input type="submit" value="Reset">
+	</tr>
+	</form>
+	<br>
+	<br>	
+	<a href="/ownLogin" style="margin-left: 5%">Login</a>
+</body>
+</html>

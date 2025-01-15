@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<style>
+
+</style>
+<body>
+	<h3>List Of customers</h3>
+	<table border="1" width="auto" padding="5%" >
+		<thead>
+			<tr>
+				<th>accno</th>
+				<th>name</th>
+				<th>email</th>
+				<th>pass</th>
+				<th>mobile</th>
+				<th>balance</th>
+				<th>gender</th>
+				<th>address</th>
+				<th>Accept</th>
+				<th>Denie</th>
+			</tr>
+		</thead>
+		<tbody>
+				<tr th:each="temp:${cust}">
+					<form action="/acceptCustReqByAdmin" method="post">
+					
+					<!-- 			accno -->
+					<td>
+					<span th:text="${temp.accno}" />
+					<input type="hidden" name="accno" th:value="${temp.accno}" /></td>
+
+					<td>
+					<span th:text="${temp.name}" />
+						<input type="hidden" name="name" th:value="${temp.name}" ></td>
+					
+					<!-- 				email -->
+					<td>
+					<span th:text="${temp.email}" />
+					<input type="hidden" name="email" th:value="${temp.email}" /></td>
+					
+					<!-- 				pass -->
+					<td>
+					<span th:text="${temp.pass}" />
+					<input type="hidden" name="pass" th:value="${temp.pass}" /></td>
+					
+					
+					<!-- 				MObile -->
+					<td>
+					<span th:text="${temp.mobile}" />
+					<input type="hidden" min="10" name="mobile" th:value="${temp.mobile}" /></td>
+
+					<!-- 					Balance -->
+					<td>
+					<span th:text="${temp.balance}" />
+					<input type="hidden" name="balance" th:value="${temp.balance}"/>
+					</td>
+					
+					<!-- 				Gender -->
+					<td>
+					<span th:text="${temp.gender}" />
+					<input type="hidden" name="gender" th:value="${temp.accno}" />
+					</td>
+
+					<!-- 				Address -->
+					<td>
+					<span th:text="${temp.address}" />
+					<input type="hidden" name="address" th:value="${temp.address}" /></td>
+				
+					<td><input type="submit" value="Accept"></td>
+				</form>
+				
+				<form action="/delCustReqByAdmin" method="post">
+					<td><input type="hidden" name="accno" th:value="${temp.accno}">
+						<input type="submit" value="Denie"></td>
+				</form>
+				
+			</tr>
+			
+		</tbody>
+	</table>
+	<br>
+	<br>
+	<a href="/admin" style="margin-left: 5%">Back</a>
+</body>
+</html>

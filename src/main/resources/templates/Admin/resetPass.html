@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<!-- 	<p th:text="${cust}"></p> -->
+<form action="/updatePass" method="post">
+	<tr th:each="temp:${cust}">
+	
+	<h4>Reset Password</h4>
+		<input type="hidden" name="id" th:value="${temp.id}">
+		<input type="hidden" name="userId" th:value="${temp.userId}" /><br><br>
+		<input type="hidden" name="mobile" th:value="${temp.mobile}" />
+		<input type="hidden" name="name" th:value="${temp.name}">
+		<input type="hidden" name="gender" th:value="${temp.gender}">
+		<input type="hidden" name="address" th:value="${temp.address}">
+		<input type="password" name="pass" placeholder="Enter Your New pass.." required="required"><br><br>
+		<input type="submit" value="Reset">
+	</tr>
+	</form>
+	<br>
+	<br>
+	<a href="/admin" style="margin-left: 5%">Admin</a>
+</body>
+</html>

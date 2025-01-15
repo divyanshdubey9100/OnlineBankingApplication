@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+		<h4>Deposit Money</h4>
+	<form action="/ownDeposit" method="post">
+		<input type="number" name="accno" placeholder="Enter accno..." required="required" >	<br><br>
+		<input type="number" name="balance" placeholder="Enter amount..." required="required" >	<br><br>
+		<input type="submit">
+	</form>
+	<form action="/ownWithdraw" method="post">
+	<h3>withdraw Money</h3>
+		<input type="number" name="accno" placeholder="Enter accno..." required="required">	<br><br>
+		<input type="number" name="balance" placeholder="Enter amount..." required="required">	<br><br>
+		<input type="submit">
+	</form>
+	<form action="/ownCheckBalance" method="post">
+	<h3>Check Balance</h3>
+		<input type="number" name="accno" placeholder="Enter accno..." required="required">	<br><br>
+		<input type="submit">
+	</form>
+	
+	<form action="/ownPassbook" method="post">
+	<h3>Check Customer Passbook</h3>
+		<input type="number" name="accno" placeholder="Enter accno..." required="required">	<br><br>
+		<input type="submit">
+	</form>
+	
+	<form action="/deleteCustAccByAccno" method="post">
+	<h3>Delete Account By AccNo..</h3>
+		<input type="number" name="accno" placeholder="Enter accno..." required="required">	<br><br>
+		<input type="submit">
+	<a href="/ownBanking" style="margin-left: 5%" >Back</a>
+	</form>
+</body>
+</html>

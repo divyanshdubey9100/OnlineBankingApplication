@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<h3>Enter Correct Details</h3>
+	<form action="/customerAccountDetails" method="post">
+		Name :<br><br>
+				<input type="text" name="name" placeholder="Enter Your Name" required="required"><br><br>
+		Email:<br><br>
+				<input type="email" name="email" placeholder="Enter Your email" required="required"><br><br>
+				
+		Pass:<br><br>
+				<input type="password" name="pass" placeholder="Enter Your pass" required="required"><br><br>
+		Mobile :<br><br>
+				<input type="tel" min="10" maxlength="10" placeholder="Enter Mobile Number.." name="mobile" required="required"><br><br>
+		Amount :<br><br>
+				<input type="number" name="balance" placeholder="Enter Balance" required="required"><br><br>
+		Gender:<br><br>
+		Male:<input type="radio" name="gender" value="Male"><br><br>
+		Female:<input type="radio" name="gender" value="Female"><br><br>
+		Other:<input type="radio" name="gender" value="Other"><br><br>
+		Address:<br><br><textarea rows="4" cols="23" placeholder="Enter Your Full Address" name="address" required="required"></textarea>
+		<br><br>
+		<input type="submit">
+		<a href="/admin" style="margin-left: 5%" >Back</a>
+		
+	</form>
+</body>
+</html>

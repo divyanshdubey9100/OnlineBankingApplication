@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="/custByAccno" method="post">
+		<h3>Find By Account Number</h3>
+		<input type="number" min="1" maxlength="10" placeholder="Enter AccNO.." name="accno" required="required">
+		<input type="submit">
+	</form><br><br>
+	<form action="/custByName" method="post">
+		<h3>Find By Customer Name</h3>
+		<input type="text" placeholder="Enter Customer Name.." name="name" required="required">
+		<input type="submit">
+	</form>
+	<form action="/custByMobile" method="post">
+		<h3>Find By Customer Mobile</h3>
+		<input type="tel" min="10" maxlength="10" placeholder="Enter Customer Mobile.." name="mobile" required="required">
+		<input type="submit">
+	</form>
+	<form action="/custByEmail" method="post">
+		<h3>Find By Customer Mail-Id</h3>
+		<input type="email" placeholder="Enter Customer Mail-Id.." name="email" required="required">
+		<input type="submit">
+	</form>
+	<form action="/showAllCust" method="post">
+		<h3>Show All Enrolled Customers</h3>
+		<input type="submit" value="Show All">
+	<a href="/own" style="margin-left: 5%" >Back</a>
+	</form>
+</body>
+</html>

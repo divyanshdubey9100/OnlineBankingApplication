@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<style>
+</style>
+<body>
+	<h3>List Of customers</h3>
+	<table border="1" width="auto" padding="5%">
+		<thead>
+			<tr>
+				<th>id</th>
+				<th>userID</th>
+				<th>name</th>
+				<th>mobile</th>
+				<th>gender</th>
+				<th>pass</th>
+				<th>dob</th>
+				<th>address</th>
+				<th>ques1</th>
+				<th>ans1</th>
+				<th>ques2</th>
+				<th>ans2</th>
+				<th>update</th>
+			</tr>
+		</thead>
+		<tbody>
+			<form action="/updateOwnProfile">
+				<tr th:each="temp:${cust}">
+
+					<!-- 				id -->
+					<td><span th:text="${temp.id}" /><br>
+					<br> <input type="hidden" placeholder="Enter userId.."
+						name="id" th:value="${temp.id}" required></td>
+					<!-- 				userId -->
+					<td><span th:text="${temp.userId}" /><br>
+					<br> <input type="email" placeholder="Enter userId.."
+						name="userId" required></td>
+					<!-- 					name -->
+					<td><span th:text="${temp.name}" /><br>
+					<br> <input type="text" name="name"
+						placeholder="Enter Your Name" required></td>
+
+					<!-- 				MObile -->
+					<td><span th:text="${temp.mobile}" /><br>
+					<br> <input type="tel" min="10" maxlength="10"
+						placeholder="Enter Mobile Number.." name="mobile" required></td>
+
+					<!-- 				Gender -->
+					<td>Male:<input type="radio" name="gender" value="Male"
+						required> Female:<input type="radio"
+						name="gender" value="Female"> Other:<input
+						type="radio" name="gender" value="Other">
+					</td>
+
+					<!-- 				pass -->
+					<td><span th:text="${temp.pass}" /><br>
+					<br> <input type="pass" placeholder="Enter pass.." name="pass"
+						required></td>
+					<!-- 				dob -->
+					<td><span th:text="${temp.dob}" /><br>
+					<br> <input type="date" name="dob" min="1950-01-01"
+						max="2050-12-31" required></td>
+						
+						<!-- 				address -->
+					<td><span th:text="${temp.address}" /><br>
+					<br> <input type="text" name="address" placeholder="Enter Address.." required></td>
+					<!-- 				ques1 -->
+					<td><span th:text="${temp.ques1}" /><br>
+					<br>
+					<select name="ques1" id="ques1" required>
+					<option>Select</option>
+						<option value="Name Of Your Favourite Pet">Name Of Your Favourite Pet</option>
+						<option value="Name Of Your Best Friend">Name Of Your Best Friend</option>
+						<option value="Name Of Your First Crush">Name Of Your First Crush</option>
+						<option value="Your Favourite Color">Your Favourite Color</option>
+					  </select></td>
+					  
+					  <!-- 				ans1 -->
+					  <td><span th:text="${temp.ans1}" /><br>
+					<br>
+					  <input type="text" name="ans1" id="ans1" placeholder="Enter Answer of Question1" required></td>
+					  
+					<!-- 				ques2 -->
+					<td><span th:text="${temp.ques2}" /><br>
+					<br>
+					<select name="ques2" id="ques2" required>
+					<option>Select</option>
+						<option value="Name Of Your Favourite Pet">Name Of Your Favourite Pet</option>
+						<option value="Name Of Your Best Friend">Name Of Your Best Friend</option>
+						<option value="Name Of Your First Crush">Name Of Your First Crush</option>
+						<option value="Your Favourite Color">Your Favourite Color</option>
+					  </select></td>
+					  
+					  <!-- 				ans2 -->
+					  <td><span th:text="${temp.ans2}" /><br>
+					<br>
+					  <input type="text" name="ans2" id="ans2" placeholder="Enter Answer of Question2" required></td>			
+
+					<td><input type="submit" value="Update"></td>
+				</tr>
+			</form>
+		</tbody>
+	</table>
+	<br>
+	<br>
+	<a href="/own" style="margin-left: 5%">Back</a>
+</body>
+</html>

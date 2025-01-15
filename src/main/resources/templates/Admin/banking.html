@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="/deposit" method="post">
+	<h3>Deposit Money</h3>
+		<input type="number" name="accno" placeholder="Enter accno..." required="required" >	<br><br>
+		<input type="number" name="balance" placeholder="Enter amount..." required="required" >	<br><br>
+		<input type="submit">
+	</form>
+	<form action="/withdraw" method="post">
+	<h3>withdraw Money</h3>
+		<input type="number" name="accno" placeholder="Enter accno..." required="required">	<br><br>
+		<input type="number" name="balance" placeholder="Enter amount..." required="required">	<br><br>
+		<input type="submit">
+	</form>
+	<form action="/checkBalance" method="post">
+	<h3>Check Balance</h3>
+		<input type="number" name="accno" placeholder="Enter accno..." required="required">	<br><br>
+		<input type="submit">
+	</form>
+	
+	<form action="/viewPassbook" method="post">
+	<h3>Check Customer Passbook</h3>
+		<input type="number" name="accno" placeholder="Enter accno..." required="required">	<br><br>
+		<input type="submit">
+	</form>
+	
+	<form action="/deleteByAccno" method="post">
+	<h3>Delete Account By AccNo..</h3>
+		<input type="number" name="accno" placeholder="Enter accno..." required="required">	<br><br>
+		<input type="submit">
+	<a href="/admin" style="margin-left: 5%" >Back</a>
+	</form>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<style>
+
+</style>
+<body>
+	<h3>List Of customers</h3>
+	<table border="1" width="auto" padding="5%" >
+		<thead>
+			<tr>
+				<th>accno</th>
+				<th>name</th>
+				<th>email</th>
+				<th>pass</th>
+				<th>mobile</th>
+				<th>balance</th>
+				<th>gender</th>
+				<th>address</th>
+				<th>update</th>
+			</tr>
+		</thead>
+		<tbody>
+			<form action="/updateCustEdit">
+				<tr th:each="temp:${cust}">
+
+					<!-- 			accno -->
+					<td>
+					<span th:text="${temp.accno}" />
+					<input type="hidden" name="accno" th:value="${temp.accno}" required="required"/></td>
+
+					<td>
+					<span th:text="${temp.name}" /><br><br>
+						<input type="text" name="name"
+						placeholder="Enter Your Name" required="required"></td>
+					
+					<!-- 				email -->
+					<td>
+					<span th:text="${temp.email}" /><br><br>
+					<input type="email" 
+						placeholder="Enter Mail_Id.." name="email"
+						required="required"></td>
+					
+					<!-- 				pass -->
+					<td>
+					<span th:text="${temp.pass}" /><br><br>
+					<input type="pass" 
+						placeholder="Enter pass.." name="pass"
+						required="required"></td>
+					
+					
+					<!-- 				MObile -->
+					<td>
+					<span th:text="${temp.mobile}" /><br><br>
+					<input type="tel" min="10" maxlength="10"
+						placeholder="Enter Mobile Number.." name="mobile"
+						required="required"></td>
+
+					<!-- 					Balance -->
+					<td>
+					<span th:text="${temp.balance}" />
+					<input type="hidden" name="balance" th:value="${temp.balance}"
+						required="required"/>
+					</td>
+					
+					<!-- 				Gender -->
+					<td>
+					Male:<input type="radio" name="gender" value="Male"><br>
+						<br> Female:<input type="radio" name="gender" value="Female"><br>
+						<br> Other:<input type="radio" name="gender" value="Other"><br>
+						<br>
+					</td>
+
+					<!-- 				Address -->
+					<td>
+					<span th:text="${temp.address}" />
+					<br><br>
+					<textarea name="address"
+							placeholder="Enter Your Full Address" required="required">
+				</textarea></td>
+					<td><input type="submit" value="Update"></td>
+
+				</tr>
+			</form>
+		</tbody>
+	</table>
+	<br>
+	<br>
+	<a href="/own" style="margin-left: 5%">Back</a>
+</body>
+</html>
