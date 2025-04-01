@@ -20,6 +20,18 @@
 		<spring-native.version>0.12.0</spring-native.version>
 	</properties>
 	<dependencies>
+	<!-- Spring Boot Starter Logging (Logback is included by default) -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-logging</artifactId>
+    </dependency>
+
+    <!-- Spring Boot Starter Cache for caching -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-cache</artifactId>
+    </dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>

@@ -3,14 +3,14 @@ package com.wgs.demo.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.wgs.demo.classes.Admin;
 import com.wgs.demo.repo.AdminRepo;
 import com.wgs.demo.repo.AdminUpdateRepo;
 
-@Component
-public class AdminImpl {
+@Service
+public class AdminService {
 	@Autowired
 	AdminRepo adminRepo;
 	@Autowired

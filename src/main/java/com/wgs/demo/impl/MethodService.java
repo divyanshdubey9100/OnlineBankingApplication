@@ -12,7 +12,7 @@ import com.wgs.demo.repo.CustRepo;
 import com.wgs.demo.repo.PassbookRepo;
 
 @Component
-public class MethodImpl {
+public class MethodService {
 	@Autowired
 	CustRepo custRepo;
 	@Autowired

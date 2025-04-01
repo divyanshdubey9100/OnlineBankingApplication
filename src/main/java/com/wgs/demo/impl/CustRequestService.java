@@ -3,15 +3,15 @@ package com.wgs.demo.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.wgs.demo.classes.Customer;
 import com.wgs.demo.classes.CustomerRegReq;
 import com.wgs.demo.repo.CustRegReqRepo;
 import com.wgs.demo.repo.CustRepo;
 
-@Component
-public class CustReqImpl {
+@Service
+public class CustRequestService {
 	@Autowired
 	CustRegReqRepo reqRepo;
 	@Autowired

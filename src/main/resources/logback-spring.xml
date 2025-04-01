@@ -1,0 +1,35 @@
+<configuration>
+
+    <!-- RollingFileAppender to create a new log file daily -->
+    <appender name="ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- Define the main log file -->
+        <file>C:/Test/Java/logs/banking-application.log</file>
+
+        <!-- Define the encoder for the log file format -->
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} - %msg%n</pattern>
+        </encoder>
+
+        <!-- Define the policy to roll over the log file -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- Log file will roll over every day -->
+            <fileNamePattern>C:/Test/Java/logs/banking-application-%d{yyyy-MM-dd}.log</fileNamePattern>
+
+            <!-- Keep 30 days of logs, you can change this based on your needs -->
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+
+        <!-- TriggeringPolicy for size-based roll over -->
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- Roll over when log file size exceeds 10MB -->
+            <maxFileSize>10MB</maxFileSize>
+        </triggeringPolicy>
+
+    </appender>
+
+    <!-- Set the root logger -->
+    <root level="INFO">
+        <appender-ref ref="ROLLING" />
+    </root>
+
+</configuration>

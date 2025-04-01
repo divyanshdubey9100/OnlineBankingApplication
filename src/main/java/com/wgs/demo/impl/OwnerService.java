@@ -3,13 +3,13 @@ package com.wgs.demo.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.wgs.demo.classes.Owner;
 import com.wgs.demo.repo.OwnerRepo;
 
-@Component
-public class OwnerImpl {
+@Service
+public class OwnerService {
 	@Autowired
 	OwnerRepo ownerRepo;
 

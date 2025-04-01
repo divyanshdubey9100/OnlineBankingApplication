@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,27 +17,29 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.wgs.demo.classes.Customer;
 import com.wgs.demo.classes.CustomerRegReq;
 import com.wgs.demo.classes.Passbook;
-import com.wgs.demo.impl.CustReqImpl;
-import com.wgs.demo.impl.MethodImpl;
-import com.wgs.demo.repo.AdminRepo;
+import com.wgs.demo.impl.CustRequestService;
+import com.wgs.demo.impl.MethodService;
 import com.wgs.demo.repo.CustRegReqRepo;
 import com.wgs.demo.repo.CustRepo;
 import com.wgs.demo.repo.PassbookRepo;
 
 @Controller
 public class CustomerController {
+	
+	private static final Logger logger = LoggerFactory.getLogger(CustomerController.class);
+	
 	@Autowired
 	CustRepo custRepo;
 	@Autowired
-	MethodImpl impl;
+	MethodService impl;
 	@Autowired
-	CustReqImpl reqImpl;
+	CustRequestService reqService;
 	@Autowired
 	PassbookRepo pbookRepo;
 	@Autowired
 	CustRegReqRepo reqRepo;
 	@Autowired
-	MethodImpl methodImpl;
+	MethodService methodService;
 	@Autowired
 	CustRegReqRepo custRegReqRepo;
 	
@@ -172,7 +176,7 @@ public class CustomerController {
 					passbook.setTrxMode("Debit");
 					cust.setBalance(newAmount);
 					Passbook pass=pbookRepo.saveAndFlush(passbook);
-					System.out.println("Value of Passook "+pass);
+					logger.info("Value of Passook "+pass);
 					String msg = "Hi : " + cust.getName() + " : " + customer.getBalance()
 							+ " is Successfully Withdrawn in a/c : " + cust.getAccno() + " Updated Balance is : "
 							+ cust.getBalance();
@@ -200,7 +204,7 @@ public class CustomerController {
 		for (Customer cust : custList) {
 			String bal = "Hello " + cust.getName() + " your a/c : " + cust.getAccno() + " balance : "
 					+ cust.getBalance();
-			System.out.println(bal);
+			logger.info(bal);
 			model.addAttribute("cust", bal);
 		}
 
@@ -229,7 +233,7 @@ public class CustomerController {
 					passbook.setTrxMode("Credit");
 					cust.setBalance(newAmount);
 					Passbook pass=pbookRepo.saveAndFlush(passbook);
-					System.out.println("Value of Passook "+pass);
+					logger.info("Value of Passook "+pass);
 					String msg = "Hi " + cust.getName() + " " + customer.getBalance()
 							+ " is Successfully Deposited in A/c : " + cust.getAccno() + " Updated Balance is "
 							+ cust.getBalance();
@@ -267,7 +271,7 @@ public class CustomerController {
 			return "Customer/custEditList";
 		} else if (impl.isAccExists(customer.getAccno()) == false) {
 			String mes = customer.getAccno() + " already exists! plz Wait...";
-			System.out.println(mes);
+			logger.info(mes);
 			model.addAttribute("cust", mes);
 		} else if (impl.isMobileExists(customer.getMobile()) == true) {
 			String mes = "Try with new Mobile No.. " + customer.getMobile() + " already exists!";
@@ -281,28 +285,28 @@ public class CustomerController {
 	}
 	@RequestMapping("submitCustAccReq")
 	private String submitCustomerAccReq(CustomerRegReq custReq, Model model, HttpSession session) {
-		int accRefNo = 1000 + reqImpl.getTokenId();
-		int accno=reqImpl.generateNewAccNo(accRefNo);
-//		System.out.println("Refno "+accRefNo+" accno "+accno);
+		int accRefNo = 1000 + reqService.getTokenId();
+		int accno=reqService.generateNewAccNo(accRefNo);
+//		logger.info("Refno "+accRefNo+" accno "+accno);
 		try {
-			for (int i = 0; i <= reqImpl.getTokenId(); i++) {
+			for (int i = 0; i <= reqService.getTokenId(); i++) {
 				accno++;
-				if (custReq.getBalance() >= 1000 && reqImpl.isAccExists(accno) == false
-						&& methodImpl.isAccExists(accno) == false
-						&& reqImpl.isMobileExists(custReq.getMobile()) == false
-						&& reqImpl.isMailExists(custReq.getEmail()) == false) {
+				if (custReq.getBalance() >= 1000 && reqService.isAccExists(accno) == false
+						&& methodService.isAccExists(accno) == false
+						&& reqService.isMobileExists(custReq.getMobile()) == false
+						&& reqService.isMailExists(custReq.getEmail()) == false) {
 					custReq.setAccno(accno);
 					reqRepo.save(custReq);
 					model.addAttribute("cust", custReq+ "Request Submitted Successfully..");
 					break;
-				} else if (reqImpl.isAccExists(accno) == true) {
+				} else if (reqService.isAccExists(accno) == true) {
 					String mes = accno + " already exists! plz Wait...";
-//					System.out.println(mes);
+					logger.info(mes);
 					custRegReqRepo.deleteById(accno);
 					reqRepo.flush();
 					model.addAttribute("cust", mes);
 					continue;
-				} else if (reqImpl.isMobileExists(custReq.getMobile()) == true) {
+				} else if (reqService.isMobileExists(custReq.getMobile()) == true) {
 					String mes = "Try with new Mobile No.. " + custReq.getMobile() + " already exists!";
 					model.addAttribute("cust", mes);
 					break;
@@ -313,7 +317,7 @@ public class CustomerController {
 				}
 			}
 		} catch (Exception e) {
-			System.out.println(e + " err hai err");
+			logger.info(e + " err hai err");
 		}
 		return "Customer/customerDetails";
 	}
