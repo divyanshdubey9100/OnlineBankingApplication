@@ -669,14 +669,12 @@ public class OwnerController {
 						&& methodService.isMobileExists(customer.getMobile()) == false
 						&& methodService.isMailExists(customer.getEmail()) == false) {
 					customer.setAccno(accno);
-					custRepo.save(customer);
+					custRepo.save(customer);;
 					model.addAttribute("cust", "Account Created Successfully.." + customer);
 					break;
 				} else if (methodService.isAccExists(accno) == true) {
 					String mes = accno + " already exists! plz Wait...";
 					logger.info(mes);
-					custRegReqRepo.deleteById(accno);//logic part is failing needs to check in detail
-					reqRepo.flush();
 					model.addAttribute("cust", mes);
 					continue;
 				} else if (methodService.isMobileExists(customer.getMobile()) == true) {
