@@ -40,7 +40,7 @@ public class AdminController {
 	@Autowired
 	CustRepo custRepo;
 	@Autowired
-	MethodService merhodService;
+	MethodService methodService;
 	@Autowired
 	AdminService adminService;
 	@Autowired
@@ -286,29 +286,29 @@ public class AdminController {
 		if (session.getAttribute("name") == null || adminService.isIdExists((int) session.getAttribute("id")) == false) {
 			return "redirect:/adminLogin";
 		}
-		int accRefNo = 1000 + merhodService.getTokenId();
+		int accRefNo = 1000 + methodService.getTokenId();
 		int accno = reqService.generateNewAccNo(accRefNo);
 		logger.info("Refno "+accRefNo+" accno "+accno);
 		try {
-			for (int i = 0; i <= merhodService.getTokenId(); i++) {
+			for (int i = 0; i <= methodService.getTokenId(); i++) {
 				accno++;
-				if (customer.getBalance() >= 1000 && merhodService.isAccExists(accno) == false
-						&& merhodService.isMobileExists(customer.getMobile()) == false
-						&& merhodService.isMailExists(customer.getEmail()) == false) {
+				if (customer.getBalance() >= 1000 && methodService.isAccExists(accno) == false
+						&& methodService.isMobileExists(customer.getMobile()) == false
+						&& methodService.isMailExists(customer.getEmail()) == false) {
 					customer.setAccno(accno);
 					custRepo.save(customer);
 					model.addAttribute("cust", "Account Created Successfully.." + customer);
 					break;
-				} else if (merhodService.isAccExists(accno) == true) {
+				} else if (methodService.isAccExists(accno) == true) {
 					String mes = accno + " already exists! plz Wait...";
 					logger.info(mes);
 					model.addAttribute("cust", mes);
 					continue;
-				} else if (merhodService.isMobileExists(customer.getMobile()) == true) {
+				} else if (methodService.isMobileExists(customer.getMobile()) == true) {
 					String mes = "Try with new Mobile No.. " + customer.getMobile() + " already exists!";
 					model.addAttribute("cust", mes);
 					break;
-				} else if (merhodService.isMailExists(customer.getEmail()) == true) {
+				} else if (methodService.isMailExists(customer.getEmail()) == true) {
 					String mes = "Try with new Mobile No.. " + customer.getEmail() + " already exists!";
 					model.addAttribute("cust", mes);
 					break;
@@ -333,7 +333,7 @@ public class AdminController {
 		if (session.getAttribute("name") == null || adminService.isIdExists((int) session.getAttribute("id")) == false) {
 			return "redirect:/adminLogin";
 		}
-		if (merhodService.getTokenId() != 0) {
+		if (methodService.getTokenId() != 0) {
 			List<Customer> custList = custRepo.findAll();
 			model.addAttribute("cust", custList);
 			return "Admin/customerList";
@@ -346,7 +346,7 @@ public class AdminController {
 
 	@RequestMapping("findByAccno")
 	private String detailsBasedOnAccNO(Model model, Customer customer, HttpSession session) {
-		if (merhodService.isAccExists(customer.getAccno()) == true) {
+		if (methodService.isAccExists(customer.getAccno()) == true) {
 			if (session.getAttribute("name") == null || adminService.isIdExists((int) session.getAttribute("id")) == false) {
 				return "redirect:/adminLogin";
 			}
@@ -365,7 +365,7 @@ public class AdminController {
 		if (session.getAttribute("name") == null || adminService.isIdExists((int) session.getAttribute("id")) == false) {
 			return "redirect:/adminLogin";
 		}
-		if (merhodService.isPersonExists(customer.getName()) == true) {
+		if (methodService.isPersonExists(customer.getName()) == true) {
 			List<Customer> custList = custRepo.findByName(customer.getName());
 			model.addAttribute("cust", custList);
 			return "Admin/customerEditList";
@@ -381,7 +381,7 @@ public class AdminController {
 		if (session.getAttribute("name") == null || adminService.isIdExists((int) session.getAttribute("id")) == false) {
 			return "redirect:/adminLogin";
 		}
-		if (merhodService.isMobileExists(customer.getMobile()) == true) {
+		if (methodService.isMobileExists(customer.getMobile()) == true) {
 			List<Customer> custList = custRepo.findByMobile(customer.getMobile());
 			model.addAttribute("cust", custList);
 			return "Admin/customerEditList";
@@ -397,7 +397,7 @@ public class AdminController {
 		if (session.getAttribute("name") == null || adminService.isIdExists((int) session.getAttribute("id")) == false) {
 			return "redirect:/adminLogin";
 		}
-		if (merhodService.isMailExists(customer.getEmail()) == true) {
+		if (methodService.isMailExists(customer.getEmail()) == true) {
 			List<Customer> custList = custRepo.findByEmail(customer.getEmail());
 			model.addAttribute("cust", custList);
 			return "Admin/customerEditList";
@@ -421,13 +421,13 @@ public class AdminController {
 		if (session.getAttribute("name") == null || adminService.isIdExists((int) session.getAttribute("id")) == false) {
 			return "redirect:/adminLogin";
 		}
-		if (merhodService.isAccExists(customer.getAccno()) == true) {
+		if (methodService.isAccExists(customer.getAccno()) == true) {
 			List<Customer> custList = custRepo.findByAccno(customer.getAccno());
 			for (Customer cust : custList) {
-				if (merhodService.isAccExists(customer.getAccno()) == true) {
+				if (methodService.isAccExists(customer.getAccno()) == true) {
 					String timeStamp = new SimpleDateFormat("yyyy-MM-dd_hh:mm:ss")
 							.format(Calendar.getInstance().getTime());
-					String trxId = merhodService.trxIdGen(customer.getAccno());
+					String trxId = methodService.trxIdGen(customer.getAccno());
 					logger.info("trxid generated "+trxId);
 					passbook.setTrxId(trxId);
 					passbook.setCustName(cust.getName());
@@ -460,13 +460,13 @@ public class AdminController {
 		if (session.getAttribute("name") == null || adminService.isIdExists((int) session.getAttribute("id")) == false) {
 			return "redirect:/adminLogin";
 		}
-		if (merhodService.isAccExists(customer.getAccno()) == true) {
+		if (methodService.isAccExists(customer.getAccno()) == true) {
 			List<Customer> custList = custRepo.findByAccno(customer.getAccno());
 			for (Customer cust : custList) {
 				if ((cust.getBalance() - customer.getBalance()) > 1000 && cust.getBalance() > customer.getBalance()) {
 					String timeStamp = new SimpleDateFormat("yyyy-MM-dd_hh:mm:ss")
 							.format(Calendar.getInstance().getTime());
-					String trxId = merhodService.trxIdGen(customer.getAccno());
+					String trxId = methodService.trxIdGen(customer.getAccno());
 					logger.info("trx id generated Successfully"+trxId);
 					passbook.setTrxId(trxId);
 					passbook.setCustName(cust.getName());
@@ -519,7 +519,7 @@ public class AdminController {
 		if (session.getAttribute("name") == null || adminService.isIdExists((int) session.getAttribute("id")) == false) {
 			return "redirect:/adminLogin";
 		}
-		if (merhodService.isAccExists(customer.getAccno()) == true) {
+		if (methodService.isAccExists(customer.getAccno()) == true) {
 			List<Customer> custList = custRepo.findByAccno(customer.getAccno());
 			for (Customer cust : custList) {
 				String mes = "Hello " + cust.getName() + " your a/c " + cust.getAccno() + " balance is:"
@@ -552,16 +552,16 @@ public class AdminController {
 			return "redirect:/adminLogin";
 		}
 		logger.info("Admin Controller: ",customer);
-		if (merhodService.isMobileExists(customer.getMobile()) == false && merhodService.isAccExists(customer.getAccno()) == true) {
+		if (methodService.isMobileExists(customer.getMobile()) == false && methodService.isAccExists(customer.getAccno()) == true) {
 			custRepo.saveAndFlush(customer);
 			model.addAttribute("cust", customer);
 			custRepo.flush();
 			return "Admin/customerEditList";
-		} else if (merhodService.isAccExists(customer.getAccno()) == false) {
+		} else if (methodService.isAccExists(customer.getAccno()) == false) {
 			String mes = customer.getAccno() + " already exists! plz Wait...";
 			logger.info(mes);
 			model.addAttribute("cust", mes);
-		} else if (merhodService.isMobileExists(customer.getMobile()) == true) {
+		} else if (methodService.isMobileExists(customer.getMobile()) == true) {
 			String mes = "Try with new Mobile No.. " + customer.getMobile() + " already exists!";
 			model.addAttribute("cust", mes);
 		}
@@ -628,24 +628,24 @@ public class AdminController {
 			return "redirect:/adminLogin";
 		}
 		try {
-			if (customer.getBalance() >= 1000 && merhodService.isAccExists(customer.getAccno()) == false
-					&& merhodService.isMobileExists(customer.getMobile()) == false
-					&& merhodService.isMailExists(customer.getEmail()) == false) {
+			if (customer.getBalance() >= 1000 && methodService.isAccExists(customer.getAccno()) == false
+					&& methodService.isMobileExists(customer.getMobile()) == false
+					&& methodService.isMailExists(customer.getEmail()) == false) {
 				custRepo.save(customer);
 				custRegReqRepo.deleteById(customer.getAccno());
 				reqRepo.flush();
 				model.addAttribute("cust", "Account Created Successfully.." + customer);
-			} else if (merhodService.isAccExists(customer.getAccno()) == true) {
+			} else if (methodService.isAccExists(customer.getAccno()) == true) {
 				String mes = customer.getAccno() + " already exists! plz Wait...";
 				custRegReqRepo.deleteById(customer.getAccno());
 				reqRepo.flush();
 				logger.info(mes);
 				model.addAttribute("cust", mes);
-			} else if (merhodService.isMobileExists(customer.getMobile()) == true) {
+			} else if (methodService.isMobileExists(customer.getMobile()) == true) {
 				String mes = "Try with new Mobile No.. " + customer.getMobile() + " already exists!";
 				logger.info(mes);
 				model.addAttribute("cust", mes);
-			} else if (merhodService.isMailExists(customer.getEmail()) == true) {
+			} else if (methodService.isMailExists(customer.getEmail()) == true) {
 				String mes = "Try with new Mobile No.. " + customer.getEmail() + " already exists!";
 				logger.info(mes);
 				model.addAttribute("cust", mes);
